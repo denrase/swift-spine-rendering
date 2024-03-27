@@ -15,6 +15,7 @@ final class ListViewController: UIViewController {
     
     weak var tableView: UITableView!
     var metalStack: SpineMetalStack!
+    
     var skeletons = [SpineSkeleton]()
     
     init() {
@@ -74,7 +75,8 @@ extension ListViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "listViewCell") as? ListViewCell else {
             return UITableViewCell()
         }
-        cell.setup(metalStack: metalStack, skeletons: skeletons)
+        let skeleton = skeletons[indexPath.row % skeletons.count]
+        cell.setup(metalStack: metalStack, skeleton: skeleton, animation: skeleton.animations.randomElement()?.name)
         return cell
     }
     

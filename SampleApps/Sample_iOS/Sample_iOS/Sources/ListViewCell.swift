@@ -24,7 +24,7 @@ final class ListViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setup(metalStack: SpineMetalStack, skeletons: [SpineSkeleton]) {
+    func setup(metalStack: SpineMetalStack, skeleton: SpineSkeleton, animation: String?) {
         guard spineView == nil else {
             return
         }
@@ -46,9 +46,9 @@ final class ListViewCell: UITableViewCell {
         
         self.spineView = spineView
         
-        for skeleton in skeletons {
-            spineView.add(skeleton: skeleton)
-            try! skeleton.setAnimation(named: "death", loop: true, completion: nil)
+        spineView.add(skeleton: skeleton)
+        if let animation {
+            try! skeleton.setAnimation(named: animation, loop: true, completion: nil)
         }
     }
     
