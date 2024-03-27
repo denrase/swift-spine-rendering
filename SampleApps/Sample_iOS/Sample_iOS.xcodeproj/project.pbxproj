@@ -15,6 +15,8 @@
 		91FEED1F2B3DD17900C5ADAA /* SpineSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 91FEED1E2B3DD17900C5ADAA /* SpineSwift */; };
 		91FEED212B3DD1DD00C5ADAA /* ObjectStorage+Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91FEED202B3DD1DD00C5ADAA /* ObjectStorage+Shared.swift */; };
 		91FEED242B3DD2C200C5ADAA /* Logging in Frameworks */ = {isa = PBXBuildFile; productRef = 91FEED232B3DD2C200C5ADAA /* Logging */; };
+		924A06A22BB41AB9005896A2 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924A06A12BB41AB9005896A2 /* ListViewController.swift */; };
+		924A06A42BB41AE4005896A2 /* ListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924A06A32BB41AE4005896A2 /* ListViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		91FEED162B3DCA4500C5ADAA /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		91FEED1B2B3DCA5600C5ADAA /* Skeletons */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Skeletons; path = ../../Skeletons; sourceTree = "<group>"; };
 		91FEED202B3DD1DD00C5ADAA /* ObjectStorage+Shared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ObjectStorage+Shared.swift"; sourceTree = "<group>"; };
+		924A06A12BB41AB9005896A2 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
+		924A06A32BB41AE4005896A2 /* ListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +78,8 @@
 			children = (
 				91FEED162B3DCA4500C5ADAA /* AppDelegate.swift */,
 				91FEED152B3DCA4500C5ADAA /* ViewController.swift */,
+				924A06A12BB41AB9005896A2 /* ListViewController.swift */,
+				924A06A32BB41AE4005896A2 /* ListViewCell.swift */,
 				91FEED202B3DD1DD00C5ADAA /* ObjectStorage+Shared.swift */,
 			);
 			path = Sources;
@@ -160,6 +166,8 @@
 			files = (
 				91FEED212B3DD1DD00C5ADAA /* ObjectStorage+Shared.swift in Sources */,
 				91FEED192B3DCA4500C5ADAA /* AppDelegate.swift in Sources */,
+				924A06A42BB41AE4005896A2 /* ListViewCell.swift in Sources */,
+				924A06A22BB41AB9005896A2 /* ListViewController.swift in Sources */,
 				91FEED182B3DCA4500C5ADAA /* ViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
