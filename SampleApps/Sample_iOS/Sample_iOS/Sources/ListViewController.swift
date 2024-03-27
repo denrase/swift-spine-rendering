@@ -16,6 +16,8 @@ final class ListViewController: UIViewController {
     weak var tableView: UITableView!
     var metalStack: SpineMetalStack!
     
+    let logger = ObjectStorage.shared.logger
+    
     var skeletons = [SpineSkeleton]()
     
     init() {
@@ -42,7 +44,7 @@ final class ListViewController: UIViewController {
         tableView.register(ListViewCell.self, forCellReuseIdentifier: "listViewCell")
         tableView.rowHeight = 500
         
-        let logger = ObjectStorage.shared.logger
+        
         
         do {
             metalStack = try SpineMetalStack()
@@ -68,15 +70,22 @@ extension ListViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 12 * 4 // Mehrere dutzend dieser views...
+        return skeletons.count > 0 ? 12 * 4 : 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "listViewCell") as? ListViewCell else {
             return UITableViewCell()
         }
-        let skeleton = skeletons[indexPath.row % skeletons.count]
-        cell.setup(metalStack: metalStack, skeleton: skeleton, animation: skeleton.animations.randomElement()?.name)
+        if let skeleton = skeletons.count != 0 ? skeletons[indexPath.row % skeletons.count] : nil {
+            logger.info("Seting up \(skeleton.name)")
+            cell.setup(
+                metalStack: metalStack,
+                skeletons: skeletons,
+                skeleton: skeleton,
+                animation: skeleton.animations.randomElement()?.name
+            )
+        }
         return cell
     }
     

@@ -24,29 +24,33 @@ final class ListViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setup(metalStack: SpineMetalStack, skeleton: SpineSkeleton, animation: String?) {
-        guard spineView == nil else {
-            return
+    func setup(metalStack: SpineMetalStack, skeletons: [SpineSkeleton], skeleton: SpineSkeleton, animation: String?) {
+        if spineView == nil {
+            let cameraRect = CGRect(
+                origin: CGPoint(x: -350, y: -250),
+                size: CGSize(width: 700, height: 1000)
+            )
+            let spineView = SpineView(
+                metalStack: metalStack,
+                currentMediaTimeProvider: ObjectStorage.shared.currentMediaTimeProvider,
+                cameraFrame: ScreenFrame(rect: cameraRect),
+                logger: ObjectStorage.shared.logger
+            )
+            
+            spineView.frame = bounds
+            spineView.translatesAutoresizingMaskIntoConstraints = false
+            spineView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+            contentView.addSubview(spineView)
+            
+            self.spineView = spineView
         }
-        let cameraRect = CGRect(
-            origin: CGPoint(x: -350, y: -250),
-            size: CGSize(width: 700, height: 1000)
-        )
-        let spineView = SpineView(
-            metalStack: metalStack,
-            currentMediaTimeProvider: ObjectStorage.shared.currentMediaTimeProvider,
-            cameraFrame: ScreenFrame(rect: cameraRect),
-            logger: ObjectStorage.shared.logger
-        )
         
-        spineView.frame = bounds
-        spineView.translatesAutoresizingMaskIntoConstraints = false
-        spineView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        contentView.addSubview(spineView)
+        skeletons.forEach {
+            // Can't clear, so iterating over all skeletons to remove previous
+            spineView?.remove(skeleton: $0)
+        }
         
-        self.spineView = spineView
-        
-        spineView.add(skeleton: skeleton)
+        spineView?.add(skeleton: skeleton)
         if let animation {
             try! skeleton.setAnimation(named: animation, loop: true, completion: nil)
         }
