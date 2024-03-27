@@ -20,6 +20,10 @@ Animation is starte on entering the viewport and paused when leaving.
 - Some crashes with atachments and attachment types when loading samples `dragon` and `stretchyman`
 - Goblins sample does not seem to load all elements
 
+![image](img/error-spine-dragon-pro.png)
+![image](img/error-stretchyman-pro.png)
+![image](img/error-missing-goblin.png)
+
 ## Performace
 
 Run on iPhone 13 PRO
@@ -28,3 +32,7 @@ Run on iPhone 13 PRO
 - Memory ~200-250MB
 - Very High Energy Impact
 - 75% GPU
+
+![image](img/perf-cpu.png)
+![image](img/perf-energy-and-gpu.png)
+![image](img/perf-memory.png)
